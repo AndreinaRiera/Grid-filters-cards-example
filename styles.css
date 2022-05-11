@@ -2,9 +2,9 @@
 .grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  grid-auto-rows: 400px;
+  -ms-grid-columns: (minmax(20rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-auto-rows: 440px;
   grid-gap: 16px;
   grid-auto-flow: dense;
 }
@@ -31,7 +31,7 @@
 
 #filters_events {
   margin: 50px auto;
-  background-color: lightgray;
+  background-color: #f1f1f1;
   padding: 15px;
 }
 
@@ -50,7 +50,7 @@ select {
 }
 
 #section_events {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 #section_events .card {
@@ -63,7 +63,7 @@ select {
 #section_events .card .type {
   width: 100%;
   padding: 5px;
-  background-color: #aaaaaa;
+  background-color: #585858;
   color: white;
 }
 
@@ -80,7 +80,7 @@ select {
 }
 
 #section_events .card .content .title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   margin-bottom: 1rem;
   margin-top: 0;
@@ -88,8 +88,12 @@ select {
 
 #section_events .card .content .dates,
 #section_events .card .content .location {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #1b1b1b;
   margin: 0;
+}
+
+#section_events .card .content .description {
+  margin-top: 15px;
 }
 /*# sourceMappingURL=styles.css.map */
