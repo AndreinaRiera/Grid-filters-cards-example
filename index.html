@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid filters example</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <section id="filters_events">
+            <div>
+                <div>
+                    Type
+                    <select name="type">
+                        <option value="">All</option>
+                        <option value="Event">Event</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="Conference">Conference</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div>
+                    Start Date Event:
+                    <select name="type_start_date">
+                        <option value="after" selected>After...</option>
+                        <option value="before">Before...</option>
+                    </select>
+                    <input type="date" name="start_date">
+                </div>
+                <div>
+                    End Date Event:
+                    <select name="type_end_date">
+                        <option value="after">After...</option>
+                        <option value="before" selected>Before...</option>
+                    </select>
+                    <input type="date" name="end_date">
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid--full mb-4" id="section_events">
+            <!-- Added with javascript -->
+
+            <!-- 
+        <article class="card">
+            <div>
+                <div class="type">Conference</div>
+                <div class="image" style="background-image: url('https://static8.depositphotos.com/1030808/985/i/600/depositphotos_9859075-stock-photo-orlando-morning.jpg')"></div>
+
+                <div class="content">
+                    <p class="title">1 The national chiri....</p>
+                    <p class="dates" data-datefrom="2022-03-01" data-dateend="2022-03-14">
+                        March 1 - March 14, 2022
+                    </p>
+                    <p class="location">Orlando, FL</p>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod nisi consectetur bland</p>
+                </div>
+            </div>
+        </article> 
+        -->
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/animate-css-grid@1.4.3/dist/main.js"></script>
+    <script>
+
+        const section_events = document.getElementById('section_events');
+
+        const cards_list = [
+            {
+                type: 'Conference',
+                image: 'https://static8.depositphotos.com/1030808/985/i/600/depositphotos_9859075-stock-photo-orlando-morning.jpg',
+                title: 'The national chiri....',
+                text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod nisi consectetur bland',
+                dateTimeFrom: '2022-03-01',
+                dateTimeEnd: '2022-03-14',
+                datesText: 'March 1 - March 14, 2022',
+                location: 'Orlando, FL',
+
+            },
+            {
+                type: 'Workshop',
+                image: 'https://static8.depositphotos.com/1030808/985/i/600/depositphotos_9859075-stock-photo-orlando-morning.jpg',
+                title: 'The national chiri....',
+                text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod nisi consectetur bland',
+                dateTimeFrom: '2021-03-01',
+                dateTimeEnd: '2021-03-14',
+                datesText: 'March 1 - March 14, 2021',
+                location: 'Orlando, FL',
+
+            },
+            {
+                type: 'Conference',
+                image: 'https://static8.depositphotos.com/1030808/985/i/600/depositphotos_9859075-stock-photo-orlando-morning.jpg',
+                title: 'The national chiri....',
+                text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod nisi consectetur bland',
+                dateTimeFrom: '2020-01-01',
+                dateTimeEnd: '2020-01-19',
+                datesText: 'January 1 - January 19, 2020',
+                location: 'Orlando, FL',
+            },
+            {
+                type: 'Workshop',
+                image: 'https://static8.depositphotos.com/1030808/985/i/600/depositphotos_9859075-stock-photo-orlando-morning.jpg',
+                title: 'The national chiri....',
+                text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod nisi consectetur bland',
+                dateTimeFrom: '2024-02-15',
+                dateTimeEnd: '2024-02-28',
+                datesText: 'February 15 - February 28, 2024',
+                location: 'Orlando, FL',
+            },
+            {
+                type: 'Event',
+                image: 'https://static8.depositphotos.com/1030808/985/i/600/depositphotos_9859075-stock-photo-orlando-morning.jpg',
+                title: 'The national chiri....',
+                text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod nisi consectetur bland',
+                dateTimeFrom: '2025-02-15',
+                dateTimeEnd: '2025-02-18',
+                datesText: 'February 15 - February 18, 2025',
+                location: 'Orlando, FL',
+            },
+        ];
+
+        cards_list.forEach((card, index) => {
+            const card_element = document.createElement('article');
+            card_element.classList.add('card');
+            card_element.innerHTML =
+                `<div>
+                    <div class="type">${card.type}</div>
+                    <div class="image" style="background-image: url('${card.image}')"></div>
+
+                    <div class="content">
+                        <p class="title">${index + 1} ${card.title}</p>
+                        <p class="dates" data-dateFrom="${card.dateTimeFrom}" data-dateEnd="${card.dateTimeEnd}" >
+                            ${card.datesText}
+                        </p>
+                        <p class="location">${card.location}</p>
+                        <p class="description">${card.text}</p>
+                    </div>
+                </div>`;
+
+            section_events.appendChild(card_element);
+        });
+
+        function initEventGrid() {
+            const grid = document.querySelector(".grid");
+            animateCSSGrid.wrapGrid(grid, { duration: 350, easing: 'backOut' });
+
+            // Filters events
+
+            const filters_events = document.getElementById('filters_events');
+
+            // Filter by type
+
+            const filter_event_type = filters_events.querySelector('[name="type"]');
+            const cards = document.querySelectorAll('.card');
+
+            filter_event_type.addEventListener('change', ev => {
+                const type = ev.target.value.toLowerCase();
+
+                cards.forEach(card => {
+                    const type_card = card.querySelector('.type').innerText.toLowerCase();
+
+                    if (type_card === type || type === '') {
+                        card.classList.remove('card--hidden');
+                    } else {
+                        card.classList.add('card--hidden');
+                    }
+                });
+            });
+
+            // Filter by date
+
+            const start_date = filters_events.querySelector('[name="start_date"]');
+            const end_date = filters_events.querySelector('[name="end_date"]');
+
+            const type_start_date = filters_events.querySelector('[name="type_start_date"]');
+            const type_end_date = filters_events.querySelector('[name="type_end_date"]');
+
+
+
+            function filter_by_date() {
+                const date_from_filter = start_date.value ? new Date(start_date.value) : null;
+                const date_end_filter = end_date.value ? new Date(end_date.value) : null;
+
+                const type_start_date_filter = type_start_date.value;
+                const type_end_date_filter = type_end_date.value;
+
+                const check_date_range = (card_date, filter_date, type) => {
+                    return (!filter_date) || (
+                        (type === 'after' && card_date >= filter_date) ||
+                        (type === 'before' && card_date <= filter_date)
+                    );
+                };
+
+                cards.forEach(card => {
+                    const dates_dataset = card.querySelector('.dates').dataset;
+
+                    const date_card_from = new Date(dates_dataset.datefrom);
+                    const date_card_end = new Date(dates_dataset.dateend);
+
+                    const check_date_from = check_date_range(date_card_from, date_from_filter, type_start_date_filter);
+                    const check_date_end = check_date_range(date_card_end, date_end_filter, type_end_date_filter);
+
+                    if (check_date_from && check_date_end) {
+                        card.classList.remove('card--hidden');
+                    } else {
+                        card.classList.add('card--hidden');
+                    }
+                });
+            }
+
+            [start_date, end_date, type_start_date, type_end_date].forEach((element) => {
+                element.addEventListener('change', ev => {
+                    filter_by_date();
+                });
+            });
+        }
+
+        initEventGrid();
+
+    </script>
+
+</body>
+
+</html>

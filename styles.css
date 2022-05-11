@@ -1,0 +1,95 @@
+/* layout */
+.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-auto-rows: 400px;
+  grid-gap: 16px;
+  grid-auto-flow: dense;
+}
+
+#filters_events,
+#filters_events > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 5px;
+}
+
+#filters_events {
+  margin: 50px auto;
+  background-color: lightgray;
+  padding: 15px;
+}
+
+#filters_events,
+#filters_events > div {
+  gap: 25px;
+}
+
+/* styling */
+select {
+  height: 26px;
+}
+
+.card--hidden {
+  display: none;
+}
+
+#section_events {
+  font-size: 1.5rem;
+}
+
+#section_events .card {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  background-color: #f3f4f4;
+}
+
+#section_events .card .type {
+  width: 100%;
+  padding: 5px;
+  background-color: #aaaaaa;
+  color: white;
+}
+
+#section_events .card .image {
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#section_events .card .content {
+  padding: 20px;
+}
+
+#section_events .card .content .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+#section_events .card .content .dates,
+#section_events .card .content .location {
+  font-size: 0.9rem;
+  color: #1b1b1b;
+  margin: 0;
+}
+/*# sourceMappingURL=styles.css.map */
